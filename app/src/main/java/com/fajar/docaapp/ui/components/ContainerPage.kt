@@ -26,6 +26,7 @@ fun ContainerPage(
     modifier: Modifier = Modifier,
     firstContent: @Composable () -> Unit,
     secondContent: @Composable () -> Unit,
+
 ) {
     Box(
         modifier = modifier
