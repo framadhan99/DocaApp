@@ -42,50 +42,26 @@ fun HowToScreen() {
     )
 }
 
-data class Contents(
-    val subTitle: String,
-    val description: String,
-)
 
 @Composable
 fun HowToContent(){
     Box (
-        modifier = Modifier.height(600.dp)
+        modifier = Modifier.height(900.dp)
     ){
         LazyColumn (
             horizontalAlignment = Alignment.Start,
 
             ){
-
-            val conten = listOf<Contents>(
-                Contents(
-                    subTitle = "Lorem Ipsum",
-                    description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae cursus sem. Praesent dignissim ipsum eu elit molestie commodo. Nulla dui est, tincidunt sed ornare et, iaculis at leo. Quisque sit amet pulvinar ligula. Cras consequat neque quis eros aliquam congue. Morbi magna nisl, imperdiet sit amet laoreet eget, imperdiet quis diam. Suspendisse ultricies orci sit amet risus ullamcorper, ac porta tortor vehicula. Quisque quis nulla tellus."
-                ),
-                Contents(
-                    subTitle = "Lorem Ipsum",
-                    description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae cursus sem. Praesent dignissim ipsum eu elit molestie commodo. Nulla dui est, tincidunt sed ornare et, iaculis at leo. Quisque sit amet pulvinar ligula. Cras consequat neque quis eros aliquam congue. Morbi magna nisl, imperdiet sit amet laoreet eget, imperdiet quis diam. Suspendisse ultricies orci sit amet risus ullamcorper, ac porta tortor vehicula. Quisque quis nulla tellus."
-                ),
-                Contents(
-                    subTitle = "Lorem Ipsum",
-                    description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae cursus sem. Praesent dignissim ipsum eu elit molestie commodo. Nulla dui est, tincidunt sed ornare et, iaculis at leo. Quisque sit amet pulvinar ligula. Cras consequat neque quis eros aliquam congue. Morbi magna nisl, imperdiet sit amet laoreet eget, imperdiet quis diam. Suspendisse ultricies orci sit amet risus ullamcorper, ac porta tortor vehicula. Quisque quis nulla tellus."
-                ),
-                Contents(
-                    subTitle = "Lorem Ipsum",
-                    description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae cursus sem. Praesent dignissim ipsum eu elit molestie commodo. Nulla dui est, tincidunt sed ornare et, iaculis at leo. Quisque sit amet pulvinar ligula. Cras consequat neque quis eros aliquam congue. Morbi magna nisl, imperdiet sit amet laoreet eget, imperdiet quis diam. Suspendisse ultricies orci sit amet risus ullamcorper, ac porta tortor vehicula. Quisque quis nulla tellus."
-                ),
-
-                )
-            items(conten) { item ->
+            items(5) { item ->
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = item.subTitle,
+                    text = "Lorem Ipsum",
                     fontSize = 16.sp,
                     fontWeight = FontWeight(500),
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = item.description,
+                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae cursus sem. Praesent dignissim ipsum eu elit molestie commodo. Nulla dui est, tincidunt sed ornare et, iaculis at leo. Quisque sit amet pulvinar ligula. Cras consequat neque quis eros aliquam congue. Morbi magna nisl, imperdiet sit amet laoreet eget, imperdiet quis diam. Suspendisse ultricies orci sit amet risus ullamcorper, ac porta tortor vehicula. Quisque quis nulla tellus.",
                     fontSize = 12.sp,
                     fontWeight = FontWeight(400)
                 )
