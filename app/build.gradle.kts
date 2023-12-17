@@ -69,5 +69,6 @@ dependencies {
 
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.32.0")
     implementation("androidx.navigation:navigation-compose:2.7.5")
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     implementation("io.coil-kt:coil-compose:2.5.0")
 }
