@@ -1,6 +1,7 @@
 package com.fajar.docaapp.ui.screen.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -35,15 +36,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavController
 import com.fajar.docaapp.R
 import com.fajar.docaapp.ui.components.CardMenu
 import com.fajar.docaapp.ui.components.HeadlineText
 import com.fajar.docaapp.ui.components.VerticalSpace
+import com.fajar.docaapp.ui.navigation.Screen
 import com.fajar.docaapp.ui.theme.DocaTheme
 import okhttp3.internal.wait
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navController: NavController,
+) {
+    val checked = remember { mutableStateOf(false) }
     Box(
         modifier = Modifier.background(MaterialTheme.colorScheme.surfaceVariant)
 
@@ -118,9 +124,16 @@ fun HomeScreen() {
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceAround
                         ) {
-                            CardMenu(image = R.drawable.menu_doca, title = "Petcare")
+                            CardMenu(
+                                image = R.drawable.menu_doca,
+                                title = "Petcare",
+                                modifier = Modifier.clickable {
+                                    navController.navigate(
+                                        Screen.HowTo.route
+                                    )
+                                })
                             CardMenu(image = R.drawable.menu_location, title = "Petshop")
-                            CardMenu(image = R.drawable.menu_location, title = "Petshop")
+                            CardMenu(image = R.drawable.menu_doca, title = "Petprofile")
 
                         }
                         VerticalSpace(height = 32.dp)
@@ -149,8 +162,8 @@ fun HomeScreen() {
                         ) {
                             LazyColumn(
                             ) {
-                                items(3){
-                                    Row (
+                                items(3) {
+                                    Row(
                                         horizontalArrangement = Arrangement.SpaceBetween,
                                         modifier = Modifier
                                             .fillMaxWidth()
@@ -162,15 +175,15 @@ fun HomeScreen() {
                                             )
 
 
-                                    ){
-                                        val checked = remember { mutableStateOf(false) }
+                                    ) {
+
                                         Column {
                                             Text(text = "Hygiene", fontSize = 16.sp)
                                             Text(text = "Take a bath", fontSize = 14.sp)
                                         }
                                         Checkbox(checked = checked.value,
-                                            onCheckedChange = { isChecked ->
-                                                checked.value = isChecked
+                                            onCheckedChange = {
+                                                checked.value = it
                                             })
                                     }
                                     Divider()
@@ -275,6 +288,5 @@ fun HomeScreen() {
 @Composable
 fun HomeScreenPreview() {
     DocaTheme {
-        HomeScreen()
     }
 }

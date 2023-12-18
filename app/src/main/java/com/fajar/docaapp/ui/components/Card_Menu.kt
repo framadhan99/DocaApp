@@ -2,6 +2,7 @@ package com.fajar.docaapp.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,10 +27,11 @@ import com.fajar.docaapp.ui.theme.DocaTheme
 fun CardMenu(
     image: Int,
     title: String,
+    modifier: Modifier = Modifier
 ){
     Box(
         contentAlignment = Alignment.Center,
-        modifier = Modifier
+        modifier = modifier
             .shadow(
                 elevation = 3.dp,
                 spotColor = Color(0x26000000),
@@ -46,6 +48,7 @@ fun CardMenu(
                 color = Color.White,
                 shape = RoundedCornerShape(size = 12.dp)
             )
+
     ) {
         Column (
             horizontalAlignment = Alignment.CenterHorizontally
