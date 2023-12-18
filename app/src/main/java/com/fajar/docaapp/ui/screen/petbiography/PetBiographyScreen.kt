@@ -22,6 +22,7 @@ import androidx.navigation.compose.rememberNavController
 import com.fajar.docaapp.ui.components.ContainerBox
 import com.fajar.docaapp.ui.components.ContainerPage
 import com.fajar.docaapp.ui.components.TextField
+import com.fajar.docaapp.ui.navigation.Screen
 
 @Composable
 fun PetBiographyScreen(
@@ -45,7 +46,9 @@ fun PetBiographyScreen(
                 messageText2 = "",
                 content = { PetBiographyContent() },
                 spacer = { },
-                onBtnClick = { }
+                onBtnClick = {
+                    navController.navigate(Screen.Home.route)
+                }
             )
         }
     )

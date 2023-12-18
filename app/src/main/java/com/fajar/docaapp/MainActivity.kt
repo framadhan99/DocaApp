@@ -9,6 +9,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.fajar.docaapp.ui.screen.home.HomeScreen
+import com.fajar.docaapp.ui.screen.how_to.HowToScreen
 import com.fajar.docaapp.ui.theme.DocaTheme
 
 
