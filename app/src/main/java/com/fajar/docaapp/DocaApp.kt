@@ -1,19 +1,18 @@
 package com.fajar.docaapp
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.fajar.docaapp.ui.navigation.BottomBar
 import com.fajar.docaapp.ui.navigation.Screen
 import com.fajar.docaapp.ui.screen.getstarted.GetStartedScreen
 import com.fajar.docaapp.ui.screen.home.HomeScreen
 import com.fajar.docaapp.ui.screen.how_to.HowToScreen
+import com.fajar.docaapp.ui.screen.map.PetShopMapScreen
+import com.fajar.docaapp.ui.screen.map.PetVetMapScreen
 import com.fajar.docaapp.ui.screen.petbiography.PetBiographyScreen
 import com.fajar.docaapp.ui.screen.signin.SignInScreen
 import com.fajar.docaapp.ui.screen.signup.SignUpScreen
@@ -32,7 +31,6 @@ fun DocaApp(
         composable(Screen.Home.route) {
             HomeScreen(navController)
         }
-
         composable(Screen.Welcome.route) {
             WelcomeSreen(navController)
         }
@@ -50,6 +48,12 @@ fun DocaApp(
         }
         composable(Screen.HowTo.route){
             HowToScreen()
+        }
+        composable(Screen.PetshopMaps.route) {
+            PetShopMapScreen()
+        }
+        composable(Screen.PetvetMaps.route) {
+            PetVetMapScreen()
         }
     }
 }
