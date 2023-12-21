@@ -18,9 +18,10 @@ fun OutlinedButtonWithIcon(
     modifier: Modifier = Modifier,
     text: String,
     icon: Int,
+    onClick: () -> Unit,
 ) {
     OutlinedButton(
-        onClick = {  }
+        onClick = { onClick() }
     ) {
         Icon(
             painter = painterResource(icon),
