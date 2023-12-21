@@ -1,8 +1,9 @@
 package com.fajar.docaapp.ui.screen.home
 
+import android.Manifest
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,7 +20,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.CheckboxColors
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -32,6 +32,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -43,12 +45,20 @@ import com.fajar.docaapp.ui.components.HeadlineText
 import com.fajar.docaapp.ui.components.VerticalSpace
 import com.fajar.docaapp.ui.navigation.Screen
 import com.fajar.docaapp.ui.theme.DocaTheme
-import okhttp3.internal.wait
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.rememberMultiplePermissionsState
 
+@OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun HomeScreen(
     navController: NavController,
 ) {
+    val locationPermissionsState = rememberMultiplePermissionsState(
+        listOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+    )
     val checked = remember { mutableStateOf(false) }
     Box(
         modifier = Modifier.background(MaterialTheme.colorScheme.surfaceVariant)
@@ -77,10 +87,8 @@ fun HomeScreen(
                             .background(color = MaterialTheme.colorScheme.primaryContainer)
                     ) {
                         Text(
-                            text = "A", fontSize = 16.sp
-
+                            text = "E", fontSize = 16.sp
                         )
-
                     }
                 }
             }
@@ -131,9 +139,34 @@ fun HomeScreen(
                                     navController.navigate(
                                         Screen.HowTo.route
                                     )
-                                })
-                            CardMenu(image = R.drawable.menu_location, title = "Petshop")
-                            CardMenu(image = R.drawable.menu_doca, title = "Petprofile")
+                                }
+                            )
+                            CardMenu(
+                                image = R.drawable.menu_location,
+                                title = "Pet Shop",
+                                modifier = Modifier.clickable {
+                                    if (!locationPermissionsState.allPermissionsGranted) {
+                                        locationPermissionsState.launchMultiplePermissionRequest()
+                                    } else {
+                                        navController.navigate(
+                                            Screen.PetshopMaps.route
+                                        )
+                                    }
+                                }
+                            )
+                            CardMenu(
+                                image = R.drawable.menu_location,
+                                title = "Pet Clinic",
+                                modifier = Modifier.clickable {
+                                    if (!locationPermissionsState.allPermissionsGranted) {
+                                        locationPermissionsState.launchMultiplePermissionRequest()
+                                    } else {
+                                        navController.navigate(
+                                            Screen.PetvetMaps.route
+                                        )
+                                    }
+                                }
+                            )
 
                         }
                         VerticalSpace(height = 32.dp)
@@ -225,19 +258,17 @@ fun HomeScreen(
                         verticalAlignment = Alignment.CenterVertically,
 
                         ) {
-                        Box(
-                            contentAlignment = Alignment.Center,
+                        Image(
+                            painter = painterResource(R.drawable.pucci),
+                            contentDescription = null,
+                            contentScale = ContentScale.Crop,
                             modifier = Modifier
                                 .height(76.dp)
                                 .width(76.dp)
-                                .clip(shape = RoundedCornerShape(100.dp))
-                                .background(color = MaterialTheme.colorScheme.primaryContainer)
-                        ) {
-                            Text(
-                                text = "A", fontSize = 16.sp
-
-                            )
-                        }
+                                .clip(
+                                    shape = RoundedCornerShape(100.dp)
+                                )
+                        )
                         Spacer(modifier = Modifier.width(8.dp))
                         Column {
                             Text(

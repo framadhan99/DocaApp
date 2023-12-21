@@ -74,6 +74,28 @@ fun PetBiographyContent(
         "Dog",
         "Cat",
     )
+    val petBreed = arrayOf(
+        "Labrador Retriever",
+        "German Shepherd",
+        "Golden Retriever",
+        "Bulldog",
+        "Poodle",
+        "Beagle",
+        "Rottweiler",
+        "Yorkshire Terrier",
+        "Dachshund",
+        "Boxer",
+        "Shih Tzu",
+        "Siberian Husky",
+        "Great Dane",
+        "Pomeranian",
+        "Chihuahua",
+        "Doberman Pinscher",
+        "Pug",
+        "Australian Shepherd",
+        "Border Collie",
+        "Cavalier King Charles Spaniel"
+    )
     val genderOptions = listOf("Male", "Female")
     var age by remember { mutableStateOf("") }
     var weight by remember { mutableStateOf("") }
@@ -83,7 +105,7 @@ fun PetBiographyContent(
     var expandedType by remember { mutableStateOf(false) }
     var expandedBreed by remember { mutableStateOf(false) }
     var selectedType by remember { mutableStateOf(petType[0]) }
-    var selectedBreed by remember { mutableStateOf(petType[0]) }
+    var selectedBreed by remember { mutableStateOf(petBreed[0]) }
 
     TextField(
         value = name,
@@ -138,7 +160,7 @@ fun PetBiographyContent(
             expanded = expandedBreed,
             onDismissRequest = { expandedBreed = false }
         ) {
-            petType.forEach { item ->
+            petBreed.forEach { item ->
                 DropdownMenuItem(
                     text = { Text(text = item) },
                     onClick = {
